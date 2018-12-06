@@ -31,8 +31,8 @@ class InputWrapper(gym.ObservationWrapper):
 def iterate_batches(envs, batch_size):
     # infinte env sampler.
     # random.choice will never be None, hence this will sample infinitely
-    batch = [e.reset() for e in envs]
     env_gen = iter(lambda: random.choice(envs), None)
+    batch = [e.reset() for e in envs]
     while True:
         # env = env_gen.__next__()
         env = next(env_gen)
